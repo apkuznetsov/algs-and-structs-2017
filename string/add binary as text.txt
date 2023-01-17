@@ -1,0 +1,73 @@
+  public static String addBinary(String a, String b) {
+    int aLen = a.length();
+    int bLen = b.length();
+    String max;
+    String min;
+
+    if ((aLen == bLen) || (aLen > bLen)) {
+      max = a;
+      min = b;
+    } else {
+      max = b;
+      min = a;
+    }
+
+    int maxLen = max.length();
+    int minLen = min.length();
+    StringBuilder sb = new StringBuilder(maxLen + 1);
+
+    int maxIdx = maxLen - 1;
+    int minIdx = minLen - 1;
+    char maxChar;
+    char minChar;
+    char appendingChar;
+    char prevRemainderChar = ' ';
+    boolean isThereRemainder = false;
+
+    for (; minIdx >= 0; minIdx--, maxIdx--) {
+      maxChar = max.charAt(maxIdx);
+      minChar = min.charAt(minIdx);
+      appendingChar = '0';
+      prevRemainderChar = isThereRemainder ? '1' : '0';
+
+      if (maxChar == '0' && minChar == '0') {
+
+        if (prevRemainderChar == '1') {
+          appendingChar = '1';
+        }
+        isThereRemainder = false;
+
+      } else if ((maxChar == '0' && minChar == '1') || (maxChar == '1' && minChar == '0')) {
+
+        if (prevRemainderChar == '1') {
+          isThereRemainder = true;
+        } else {
+          appendingChar = '1';
+          isThereRemainder = false;
+        }
+
+      } else {
+
+        if (prevRemainderChar == '1') {
+          appendingChar = '1';
+        }
+        isThereRemainder = true;
+
+      }
+
+      sb.append(appendingChar);
+    }
+
+    /*
+    int lenDiff = maxLen - minLen;
+    if (isThereRemainder && lenDiff > 0) {
+      sb.append('0');
+      sb.append('1');
+    } else if (isThereRemainder) {
+      sb.append('1');
+    }
+    */
+
+    return sb.reverse()
+        .toString();
+  }
