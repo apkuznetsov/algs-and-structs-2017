@@ -1,7 +1,9 @@
+package kuznetsov;
+
 import java.io.*;
 import java.util.Random;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) throws IOException {
         long startTime = System.currentTimeMillis();
@@ -74,4 +76,5 @@ public class Main {
             printWriter.close();
         }
     }
+
 }
