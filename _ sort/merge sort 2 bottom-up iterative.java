@@ -1,7 +1,9 @@
+package kuznetsov;
+
 import java.io.*;
 import java.util.Random;
 
-public class Main {
+class Main {
 
     int[] a;
     int[] temp;
@@ -75,4 +77,5 @@ public class Main {
             printWriter.close();
         }
     }
+
 }
